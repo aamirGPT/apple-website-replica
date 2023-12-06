@@ -9,38 +9,151 @@
     background: rgba(22, 22, 23, 1);
     transition: background 0.3s ease;
 }
-
+.applelogo {
+    transition: filter 0.5s ease;
+}
+.applelogo:hover {
+    filter: brightness(150%);
+}
 .NavBar.scrolled {
     background: rgba(22, 22, 23, 0.8);
     backdrop-filter: blur(5px);
 }
-.NavList{
+.NavList {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2.65%;
-    
+
     width: 100%;
     padding: 0 22px;
     color: #b0b0b0;
 }
-.NavList img{
+.NavList img {
     height: 40%;
 }
-.NavList div {
+.NavListStore,
+.NavListMac,
+.NavListiPad,
+.NavListiPhone,
+.NavListWatch,
+.NavListAirPods,
+.NavListTVandHome,
+.NavListEntertainment,
+.NavListAccessories,
+.NavListSupport {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.NavListTV\&Home {
-  white-space: nowrap;
+    white-space: nowrap;
+    transition: color 0.5s ease;
 }
 
+.NavListStore:hover,
+.NavListMac:hover,
+.NavListiPad:hover,
+.NavListiPhone:hover,
+.NavListWatch:hover,
+.NavListAirPods:hover,
+.NavListTVandHome:hover,
+.NavListEntertainment:hover,
+.NavListAccessories:hover,
+.NavListSupport:hover {
+    color: #e5e5e5;
+    cursor: pointer;
+}
+.NLIsearch,
+.NLIbag {
+    transition: filter 0.5s ease;
+}
+
+.NLIsearch:hover,
+.NLIbag:hover {
+    cursor: pointer;
+    filter: brightness(150%);
+}
+
+.NavListIcons {
+    display: flex;
+    height: 100%;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Add this to your existing CSS file */
+.HamburgerIcon {
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.5s ease; /* Add transition property */
+}
+.HamburgerIcon:hover{
+    filter: brightness(200%);
+}
+
+.HamburgerIcon.open {
+    transform: rotate(90deg); /* Rotate the hamburger icon when open */
+}
+.MobileMenu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(22, 22, 23, 1);
+    color: #e5e5e5;
+    transition: transform 0.3s ease;
+}
+
+.MenuItem {
+    font-size: 25px;
+    font-weight: bold;
+    padding: 7px 52px;
+    /* border-bottom: 1px solid #333; */
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: SFDP-Regular;
+}
+.MenuItem:hover {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+.closeButton {
+    display: flex;
+    justify-content: right;
+    padding: 20px;
+}
+.MenuItem img {
+    height: 15px;
+}
 
 /* For Tablet Screen */
 @media (min-width: 601px) and (max-width: 830px) {
     .NavBar {
         font-size: 12px;
+    }
+    .NavList {
+        justify-content: space-between;
+    }
+    .NavListStore,
+    .NavListMac,
+    .NavListiPad,
+    .NavListiPhone,
+    .NavListWatch,
+    .NavListAirPods,
+    .NavListTVandHome,
+    .NavListEntertainment,
+    .NavListAccessories,
+    .NavListSupport {
+        display: none;
+    }
+    .NavListIcons {
+        display: flex;
+        height: 100%;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -48,5 +161,27 @@
 @media (max-width: 600px) {
     .NavBar {
         font-size: 12px;
+    }
+    .NavList {
+        justify-content: space-between;
+    }
+    .NavListStore,
+    .NavListMac,
+    .NavListiPad,
+    .NavListiPhone,
+    .NavListWatch,
+    .NavListAirPods,
+    .NavListTVandHome,
+    .NavListEntertainment,
+    .NavListAccessories,
+    .NavListSupport {
+        display: none;
+    }
+    .NavListIcons {
+        display: flex;
+        height: 100%;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
     }
 }

@@ -10,4 +10,5 @@
 .App {
   display: flex;
   flex-direction: column;
+  font-family: SFPT-Regular, Arial, Helvetica, sans-serif;
 }
