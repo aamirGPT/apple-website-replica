@@ -11,6 +11,7 @@ const NavBar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 830);
     const [isMenuOpen, setMenuOpen] = useState(false);
+    const [isStoreHovered, setStoreHovered] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -24,7 +25,6 @@ const NavBar = () => {
         window.addEventListener("scroll", handleScroll);
         window.addEventListener("resize", handleResize);
 
-        // Cleanup the event listener on component unmount
         return () => {
             window.removeEventListener("scroll", handleScroll);
             window.removeEventListener("resize", handleResize);
@@ -35,7 +35,6 @@ const NavBar = () => {
         setMenuOpen(!isMenuOpen);
     };
     const closeMenu = () => {
-        // Close the menu
         setMenuOpen(false);
     };
 
@@ -43,7 +42,18 @@ const NavBar = () => {
         <div className={`NavBar ${scrolled ? "scrolled" : ""}`}>
             <div className="NavList">
                 <img className="applelogo" src={applelogo} alt="logo" />
-                <div className="NavListStore">Store</div>
+                <div
+                    className="NavListStore"
+                    onMouseEnter={() => setStoreHovered(true)}
+                    onMouseLeave={() => setStoreHovered(false)}
+                >
+                    Store
+                </div>
+                {isStoreHovered && (
+                    <div className="HiddenContent">
+                        Store
+                    </div>
+                )}
                 <div className="NavListMac">Mac</div>
                 <div className="NavListiPad">iPad</div>
                 <div className="NavListiPhone">iPhone</div>
@@ -65,9 +75,7 @@ const NavBar = () => {
                             <img
                                 src={hamburgerIcon}
                                 alt="hamburger-menu"
-                                className={`HamburgerIcon ${
-                                    isMenuOpen ? "open" : ""
-                                }`}
+                                className={`HamburgerIcon`}
                                 onClick={toggleMenu}
                             />
                             {isMenuOpen && (
@@ -76,7 +84,6 @@ const NavBar = () => {
                                         isMenuOpen ? "open" : ""
                                     }`}
                                 >
-                                    {/* Add your mobile menu items here */}
                                     <div
                                         className="MenuItem closeButton"
                                         onClick={closeMenu}
@@ -138,7 +145,7 @@ const NavBar = () => {
                                         Accessories
                                     </div>
                                     <div
-                                        className="MenuItem"
+                                        className="MenuItem MISupport"
                                         onClick={closeMenu}
                                     >
                                         Support
@@ -150,18 +157,13 @@ const NavBar = () => {
                 ) : (
                     <>
                         <div className="NavListStore">Store</div>
-                        {/* ... (rest of the NavList items) */}
                         <div className="NavListIcons">
                             <img
                                 className="NLIsearch"
                                 src={searchimg}
                                 alt="search"
                             />
-                            <img
-                                className="NLIbag"
-                                src={bagimag}
-                                alt="bag"
-                            />
+                            <img className="NLIbag" src={bagimag} alt="bag" />
                         </div>
                     </>
                 )}
